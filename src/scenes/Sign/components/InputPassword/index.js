@@ -13,17 +13,18 @@ function InputPassword({
   handleClickShowPassword,
   classes,
   values,
+  label,
 }) {
   return (
     <FormControl className={classes.form}>
-      <InputLabel htmlFor="password">Mật khẩu</InputLabel>
+      <InputLabel htmlFor="password">{label || "Mật khẩu"}</InputLabel>
       <Input
         variant="standard"
         margin="normal"
         required
         fullWidth
         name="password"
-        label="Mật khẩu"
+        label={label || "Mật khẩu"}
         type={values.showPassword ? "text" : "password"}
         id="password"
         onChange={handleChange("password")}

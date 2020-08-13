@@ -4,12 +4,10 @@ import {
   CssBaseline,
   Container,
   Typography,
-  Box,
   Grid,
   Link,
 } from "@material-ui/core";
 import { InputPassword, InputNormal, ButtonNormal } from "../../components/";
-import { Copyright } from "../../../components/";
 
 export default function Login() {
   const classes = useStyles();
@@ -60,19 +58,18 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/register" variant="body2">
                 {"Bạn không có tài khoản? Đăng ký ngay"}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }
+
+/*SPACING: spacing(8px * param)*/
 
 const useStyles = makeStyles((theme) => ({
   paper: {
