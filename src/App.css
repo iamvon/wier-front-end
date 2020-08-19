@@ -2,3 +2,7 @@ a {
   text-decoration: none;
   color: #4e4e4d;
 }
+
+a:hover {
+  filter: brightness(1.4);
+}
