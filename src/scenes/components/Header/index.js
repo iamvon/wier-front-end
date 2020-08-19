@@ -20,6 +20,9 @@ function Header() {
         <NavLink className={classes.link} to="/register">
           Register
         </NavLink>
+        <NavLink className={classes.link} to="/profile">
+          Profile
+        </NavLink>
       </Box>
     </Box>
   );
@@ -31,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     padding: theme.spacing(2),
     display: "flex",
-    backgroundColor: "#eee",
     alignItems: "center",
   },
   link: {
