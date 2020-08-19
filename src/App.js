@@ -2,6 +2,7 @@ import React from "react";
 import { Login, Register } from "./scenes/Sign/scenes";
 import { Copyright, Header } from "./scenes/components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
   /* EXAMPLE VIEW FOR CODING */

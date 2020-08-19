@@ -7,8 +7,8 @@ import {
   Grid,
   Box,
   Button,
-  Link,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import { InputPassword, InputNormal, ButtonNormal } from "../../components/";
 
 function Register() {
@@ -76,7 +76,9 @@ function Register() {
             mt={2}
             style={{ cursor: "pointer" }}
           >
-            <Link variant="body2">Bạn đã có tài khoản? Đăng nhập ngay</Link>
+            <Link to="/login" variant="body2">
+              Bạn đã có tài khoản? Đăng nhập ngay
+            </Link>
           </Box>
         </form>
       </div>
