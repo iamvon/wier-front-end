@@ -1,8 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Grid } from "@material-ui/core";
+import { Box,Grid, Typography } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
-
 function Header() {
   const classes = useStyles();
 
@@ -31,6 +30,12 @@ function Header() {
               <NavLink className={classes.link} to="/profile">
                 Profile
               </NavLink>
+                <NavLink className={classes.link} to="/productdetail">
+                    Product detail
+                </NavLink>
+                <NavLink className={classes.link} to="/checkout">
+                    Checkout
+                </NavLink>
             </Box>
           </Grid>
         </Grid>

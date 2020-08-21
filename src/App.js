@@ -6,7 +6,8 @@ import { Item } from "./scenes/Home/components";
 import { HomePage } from "./scenes/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-
+import { Checkout } from "./scenes/Checkout/components";
+import {ProductDetail} from './scenes/ProductDetail/index'
 function App() {
   /* EXAMPLE VIEW FOR CODING */
   return (
@@ -15,17 +16,20 @@ function App() {
       <Header />
       {/* BODY */}
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
         <Route path="/login">
           <Login />
         </Route>
+          <Route path="/checkout">
+              <Checkout />
+          </Route>
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/profile">
-          <ProfileView />
+          <Route path="/productdetail">
+          <ProductDetail />
+        </Route>
+        <Route exact path="/">
+          <HomePage />
         </Route>
       </Switch>
       {/* COPYRIGHT FOOTER */}
