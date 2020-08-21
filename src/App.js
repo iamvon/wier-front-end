@@ -25,6 +25,9 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/profile">
+          <ProfileView />
+        </Route>
           <Route path="/productdetail">
           <ProductDetail />
         </Route>
