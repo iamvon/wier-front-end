@@ -20,6 +20,12 @@ function Header() {
         <NavLink className={classes.link} to="/register">
           Register
         </NavLink>
+        <NavLink className={classes.link} to="/productdetail">
+          Product detail
+        </NavLink>
+        <NavLink className={classes.link} to="/checkout">
+          Checkout
+        </NavLink>
       </Box>
     </Box>
   );
