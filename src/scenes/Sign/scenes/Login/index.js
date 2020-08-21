@@ -1,13 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  CssBaseline,
-  Container,
-  Typography,
-  Grid,
-  Link,
-} from "@material-ui/core";
+import { CssBaseline, Container, Typography, Grid } from "@material-ui/core";
 import { InputPassword, InputNormal, ButtonNormal } from "../../components/";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const classes = useStyles();
@@ -53,12 +48,12 @@ export default function Login() {
           <ButtonNormal type="submit" label="Đăng nhập" classes={classes} />
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link to="/register" variant="body2">
                 Quên mật khẩu?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/register" variant="body2">
+              <Link to="/register" variant="body2">
                 {"Bạn không có tài khoản? Đăng ký ngay"}
               </Link>
             </Grid>

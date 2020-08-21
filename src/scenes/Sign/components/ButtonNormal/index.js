@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "@material-ui/core";
 
-function ButtonNormal({ type, label, classes, ...props }) {
+function ButtonNormal({ type, label, classes }) {
   return (
     <Button
       type={type}
@@ -10,8 +10,7 @@ function ButtonNormal({ type, label, classes, ...props }) {
       variant="contained"
       color="primary"
       className={classes.submit}
-      {...props}
-      >
+    >
       {label}
     </Button>
   );
