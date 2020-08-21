@@ -105,7 +105,7 @@ export default function Item(props) {
             {/* <DialogTitle id="customized-dialog-title" onClose={handleClose}>
                 Chi tiết sản phẩm
             </DialogTitle> */}
-            <DialogContent style={{ height: 500, width: 500 }}>
+            <DialogContent style={{ height: 650, width: 650 }}>
             </DialogContent>
         </Dialog>
     ));
