@@ -1,0 +1,21 @@
+a {
+  text-decoration: none;
+  color: #eae8e8;
+}
+
+a:hover {
+  filter: brightness(1.4);
+}
+
+.tabPanel__item {
+  margin: 0 auto;
+  width: 35vmax;
+}
+
+.customInputStyle fieldset {
+  border-radius: 20px;
+}
+
+body {
+  background: #f7f7f7;
+}
