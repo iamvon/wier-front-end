@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InputText, InputDate } from '../../../components';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -28,6 +28,15 @@ const useStyles = makeStyles((theme) => ({
 
 function Persona() {
   const classes = useStyles();
+  const [data, setData] = useState({
+    name: null,
+    height: null,
+    dob: null,
+  });
+
+  const handleChange = (data) => {
+    setData(data);
+  };
 
   return (
     <div className={classes.root}>

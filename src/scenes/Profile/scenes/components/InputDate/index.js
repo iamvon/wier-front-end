@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Paper, Box, Typography } from '@material-ui/core';
-import { KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 /*
   Function to get current date
@@ -14,24 +19,31 @@ function getCurrentDate() {
 
 function InputDate({ name, label, classes }) {
   const defaultValue = getCurrentDate();
+  const [selectedDate, setSelectedDate] = useState(defaultValue);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
   console.log(defaultValue);
   return (
     <Paper className={classes.container} elevation={0} square={false}>
       <Box>
         <Typography className={classes.text}>{label}</Typography>
       </Box>
-      <KeyboardDatePicker
-        margin="normal"
-        id="date-picker-dialog"
-        label={label}
-        format="MM/dd/yyyy"
-        name={name}
-        value={defaultValue}
-        // onChange={handleDateChange}
-        KeyboardButtonProps={{
-          'aria-label': 'change date',
-        }}
-      />
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date picker dialog"
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+      </MuiPickersUtilsProvider>
     </Paper>
   );
 }
