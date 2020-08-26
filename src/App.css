@@ -1,10 +1,6 @@
 a {
   text-decoration: none;
-<<<<<<< HEAD
-  color: #4e4e4d;
-=======
   color: #eae8e8;
->>>>>>> cbfaf6db81f9aea149180986823bd45b7c5cd2b9
 }
 
 a:hover {
@@ -19,10 +15,7 @@ a:hover {
 .customInputStyle fieldset {
   border-radius: 20px;
 }
-<<<<<<< HEAD
-=======
 
 body {
   background: #f7f7f7;
 }
->>>>>>> cbfaf6db81f9aea149180986823bd45b7c5cd2b9

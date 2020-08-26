@@ -1,40 +1,19 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box,Grid, Typography } from "@material-ui/core";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box, Grid, Typography } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 function Header() {
   const classes = useStyles();
 
   return (
-<<<<<<< HEAD
-    <Box className={classes.container}>
-      <Box flexGrow={1}>
-        <Typography>Wier</Typography>
-      </Box>
-      <Box flexGrow={1} display="flex" justifyContent="flex-end">
-        <NavLink className={classes.link} to="/">
-          Home
-        </NavLink>
-        <NavLink className={classes.link} to="/login">
-          Login
-        </NavLink>
-        <NavLink className={classes.link} to="/register">
-          Register
-        </NavLink>
-        <NavLink className={classes.link} to="/profile">
-          Profile
-        </NavLink>
-      </Box>
-    </Box>
-=======
     <div className={classes.root}>
       <div className={classes.container}>
         <Grid container>
           <Grid item xs>
-            <Box flexGrow={1} display="flex" >
+            <Box flexGrow={1} display="flex">
               <NavLink className={classes.link} to="/">
-              WIER
-            </NavLink>
+                WIER
+              </NavLink>
             </Box>
           </Grid>
           <Grid item xs>
@@ -51,12 +30,12 @@ function Header() {
               <NavLink className={classes.link} to="/profile">
                 Profile
               </NavLink>
-                <NavLink className={classes.link} to="/productdetail">
-                    Product detail
-                </NavLink>
-                <NavLink className={classes.link} to="/checkout">
-                    Checkout
-                </NavLink>
+              <NavLink className={classes.link} to="/productdetail">
+                Product detail
+              </NavLink>
+              <NavLink className={classes.link} to="/checkout">
+                Checkout
+              </NavLink>
             </Box>
           </Grid>
         </Grid>
@@ -73,7 +52,6 @@ function Header() {
         </Grid>
       </Grid> */}
     </div>
->>>>>>> cbfaf6db81f9aea149180986823bd45b7c5cd2b9
   );
 }
 
@@ -83,14 +61,14 @@ const useStyles = makeStyles((theme) => ({
   container: {
     flexGrow: 1,
     padding: theme.spacing(2),
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: "#8092ed"
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: '#8092ed',
   },
   link: {
-    fontFamily: "Arial",
-    textDecoration: "none",
-    color: "fcfcfc",
+    fontFamily: 'Arial',
+    textDecoration: 'none',
+    color: 'fcfcfc',
     fontWeight: 500,
     padding: theme.spacing(1, 2),
   },
