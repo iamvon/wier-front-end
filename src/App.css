@@ -12,8 +12,18 @@ a:hover {
   width: 35vmax;
 }
 
-.customInputStyle fieldset {
-  border-radius: 20px;
+/*Got lots of errors so have to use custom input*/
+
+.customInputStyle {
+  border-radius: 12px;
+  border: 0.1rem solid #bbb;
+  outline-width: 0;
+  padding: 14px 10px;
+  font-size: 16px;
+  transition: all 0.4s ease;
+}
+.customInputStyle:focus {
+  border-color: #3f51b5;
 }
 
 body {

@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import { Tabs, Tab, Typography, Box } from "@material-ui/core";
-import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import { Persona } from "./scences";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import { Tabs, Tab, Typography, Box } from '@material-ui/core';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import { Persona } from './scences';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -15,8 +15,7 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
+      {...other}>
       {value === index && (
         <Box p={5}>
           <Typography>{children}</Typography>
@@ -29,7 +28,7 @@ function TabPanel(props) {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -43,14 +42,14 @@ export default function ProfileView() {
 
   return (
     <div className={classes.container}>
-      <div position="static" style={{ background: "none" }}>
+      <div position="static" style={{ background: 'none' }}>
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="simple tabs example"
           indicatorColor="primary"
           centered
-        >
+          component={'div'}>
           <Tab
             label="Persona"
             icon={<PersonOutlineOutlinedIcon />}
@@ -63,7 +62,11 @@ export default function ProfileView() {
           />
         </Tabs>
       </div>
-      <TabPanel value={value} index={0} className="tabPanel__item">
+      <TabPanel
+        value={value}
+        index={0}
+        className="tabPanel__item"
+        component={'div'}>
         <Persona />
       </TabPanel>
       <TabPanel value={value} index={1}></TabPanel>
@@ -77,13 +80,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.secondary,
   },
   tabsContainer: {
-    paddingTop: "20px",
-    background: "none",
+    paddingTop: '20px',
+    background: 'none',
   },
   flexColumnCenter: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 }));

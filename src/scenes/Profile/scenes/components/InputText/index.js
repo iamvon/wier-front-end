@@ -1,20 +1,34 @@
-import React from "react";
-import { TextField, Box, Typography, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from 'react';
+import { Box, Typography } from '@material-ui/core';
 
-function InputName({ label, name, classes }) {
+function InputText({ label, name, classes, setData, data, type }) {
+  const handleChange = (e) => {
+    if (name === 'name') setData({ ...data, name: e.target.value });
+    else if (name === 'height')
+      setData({ ...data, height: e.target.value.replace(/\D/gi, '') });
+    else setData({ ...data, weight: e.target.value.replace(/\D/gi, '') });
+  };
+
   return (
-    <Paper className={classes.container} elevation={0} square={false}>
+    <div className={classes.container} elevation={0}>
+      <Box component={'div'}>
+        <Typography component={'span'} className={classes.text}>
+          {label}
+        </Typography>
+      </Box>
       <Box>
-        <Typography className={classes.text}>{label}</Typography>
+        <input
+          id={name}
+          name={name}
+          type={type}
+          size="small"
+          className="customInputStyle"
+          required
+          onChange={(e) => handleChange(e)}
+        />
       </Box>
-      <Box className="customInputStyle">
-        <form autoComplete="off">
-          <TextField id={name} variant="outlined" size="small" />
-        </form>
-      </Box>
-    </Paper>
+    </div>
   );
 }
 
-export default InputName;
+export default InputText;
