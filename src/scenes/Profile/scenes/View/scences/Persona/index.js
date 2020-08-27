@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { InputText, InputDate } from '../../../components';
+import {
+  InputText,
+  InputDate,
+  InputGender,
+  InputStyle,
+  InputSize,
+  InputBudget,
+} from '../../../components';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +26,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FAF9FA',
     borderRadius: '15px',
   },
+  containerSlider: {
+    width: '100%',
+    padding: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    backgroundColor: '#FAF9FA',
+    borderRadius: '15px',
+  },
   text: {
     fontWeight: 'bold',
     color: '#4d4d4a',
@@ -31,7 +45,9 @@ function Persona() {
   const [data, setData] = useState({
     name: null,
     height: null,
+    weight: null,
     dob: null,
+    gender: null,
   });
 
   const handleChange = (data) => {
@@ -42,7 +58,12 @@ function Persona() {
     <div className={classes.root}>
       <InputText label="Tên" name="name" classes={classes} />
       <InputText label="Chiều cao" name="height" classes={classes} />
+      <InputText label="Cân nặng" name="weight" classes={classes} />
       <InputDate label="Ngày sinh" name="dob" classes={classes} />
+      <InputGender label="Giới tính" name="gender" classes={classes} />
+      <InputStyle label="Phong cách" name="style" classes={classes} />
+      <InputSize label="Kích cỡ" name="size" classes={classes} />
+      <InputBudget label="Chi phí" name="budget" classes={classes} />
     </div>
   );
 }

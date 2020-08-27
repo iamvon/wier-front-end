@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Paper, Box, Typography } from '@material-ui/core';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
 
 /*
   Function to get current date
@@ -14,36 +7,36 @@ import {
 */
 function getCurrentDate() {
   const date = new Date();
-  return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  const dd = date.getDate();
+  const mm = date.getMonth() + 1;
+  const yyyy = date.getFullYear();
+  return `${yyyy}-${mm > 9 ? mm : '0' + mm}-${dd > 9 ? dd : '0' + dd}`;
 }
 
 function InputDate({ name, label, classes }) {
   const defaultValue = getCurrentDate();
   const [selectedDate, setSelectedDate] = useState(defaultValue);
-
-  const handleDateChange = (date) => {
+  const handleChange = (date) => {
     setSelectedDate(date);
   };
 
-  console.log(defaultValue);
   return (
     <Paper className={classes.container} elevation={0} square={false}>
       <Box>
-        <Typography className={classes.text}>{label}</Typography>
+        <Typography component={'span'} className={classes.text}>
+          {label}
+        </Typography>
       </Box>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          margin="normal"
-          id="date-picker-dialog"
-          label="Date picker dialog"
-          format="MM/dd/yyyy"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-      </MuiPickersUtilsProvider>
+      <TextField
+        id={name}
+        name={name}
+        type="date"
+        onChange={handleChange}
+        defaultValue={defaultValue}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
     </Paper>
   );
 }

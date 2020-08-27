@@ -1,19 +1,23 @@
-import React from "react";
-import { TextField, Box, Typography, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { Box, Typography } from '@material-ui/core';
 
 function InputName({ label, name, classes }) {
   return (
-    <Paper className={classes.container} elevation={0} square={false}>
+    <div className={classes.container} elevation={0}>
+      <Box component={'div'}>
+        <Typography component={'span'} className={classes.text}>
+          {label}
+        </Typography>
+      </Box>
       <Box>
-        <Typography className={classes.text}>{label}</Typography>
+        <input
+          id={name}
+          name={name}
+          size="small"
+          className="customInputStyle"
+        />
       </Box>
-      <Box className="customInputStyle">
-        <form autoComplete="off">
-          <TextField id={name} variant="outlined" size="small" />
-        </form>
-      </Box>
-    </Paper>
+    </div>
   );
 }
 
