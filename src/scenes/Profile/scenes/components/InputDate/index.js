@@ -13,11 +13,11 @@ function getCurrentDate() {
   return `${yyyy}-${mm > 9 ? mm : '0' + mm}-${dd > 9 ? dd : '0' + dd}`;
 }
 
-function InputDate({ name, label, classes }) {
+function InputDate({ name, label, classes, data, setData }) {
   const defaultValue = getCurrentDate();
-  const [selectedDate, setSelectedDate] = useState(defaultValue);
-  const handleChange = (date) => {
-    setSelectedDate(date);
+
+  const handleChange = (e) => {
+    setData({ ...data, dob: e.target.value });
   };
 
   return (
@@ -31,7 +31,7 @@ function InputDate({ name, label, classes }) {
         id={name}
         name={name}
         type="date"
-        onChange={handleChange}
+        onChange={(e) => handleChange(e)}
         defaultValue={defaultValue}
         InputLabelProps={{
           shrink: true,

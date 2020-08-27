@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Radio,
   RadioGroup,
@@ -9,11 +9,18 @@ import {
   Paper,
 } from '@material-ui/core';
 
-export default function RadioButtonsGroup({ name, label, classes }) {
-  const [value, setValue] = React.useState('female');
+export default function RadioButtonsGroup({
+  name,
+  label,
+  classes,
+  data,
+  setData,
+}) {
+  const [value, setValue] = useState('female');
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    setData({ ...data, gender: event.target.value });
   };
 
   const genders = [
@@ -38,7 +45,7 @@ export default function RadioButtonsGroup({ name, label, classes }) {
             name={name}
             value={value}
             component={'span'}
-            onChange={handleChange}>
+            onChange={(e) => handleChange(e)}>
             {genders.map(({ value, name }) => (
               <FormControlLabel
                 value={value}

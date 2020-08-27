@@ -8,6 +8,7 @@ import {
   InputBudget,
 } from '../../../components';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,21 +51,79 @@ function Persona() {
     gender: null,
   });
 
-  const handleChange = (data) => {
-    setData(data);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    /* For testing */
+    console.log('%cHello', 'color: aquamarine; font-size: 30px;');
+    console.log(data);
+    alert(JSON.stringify(data));
   };
 
   return (
-    <div className={classes.root}>
-      <InputText label="Tên" name="name" classes={classes} />
-      <InputText label="Chiều cao" name="height" classes={classes} />
-      <InputText label="Cân nặng" name="weight" classes={classes} />
-      <InputDate label="Ngày sinh" name="dob" classes={classes} />
-      <InputGender label="Giới tính" name="gender" classes={classes} />
-      <InputStyle label="Phong cách" name="style" classes={classes} />
-      <InputSize label="Kích cỡ" name="size" classes={classes} />
-      <InputBudget label="Chi phí" name="budget" classes={classes} />
-    </div>
+    <form className={classes.root}>
+      <InputText
+        label="Tên"
+        name="name"
+        classes={classes}
+        setData={setData}
+        data={data}
+        type="text"
+      />
+      <InputText
+        label="Chiều cao"
+        name="height"
+        classes={classes}
+        setData={setData}
+        data={data}
+        type="number"
+      />
+      <InputText
+        label="Cân nặng"
+        name="weight"
+        classes={classes}
+        setData={setData}
+        data={data}
+        type="number"
+      />
+      <InputDate
+        label="Ngày sinh"
+        name="dob"
+        classes={classes}
+        setData={setData}
+        data={data}
+      />
+      <InputGender
+        label="Giới tính"
+        name="gender"
+        classes={classes}
+        data={data}
+        setData={setData}
+      />
+      <InputStyle
+        label="Phong cách"
+        name="style"
+        classes={classes}
+        data={data}
+        setData={setData}
+      />
+      <InputSize
+        label="Kích cỡ"
+        name="size"
+        classes={classes}
+        data={data}
+        setData={setData}
+      />
+      <InputBudget
+        label="Chi phí"
+        name="budget"
+        classes={classes}
+        data={data}
+        setData={setData}
+      />
+      <Button variant="contained" color="primary" onClick={handleSubmit}>
+        Cập nhật
+      </Button>
+    </form>
   );
 }
 

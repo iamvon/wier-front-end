@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Typography } from '@material-ui/core';
 
-function InputName({ label, name, classes }) {
+function InputText({ label, name, classes, setData, data, type }) {
+  const handleChange = (e) => {
+    if (name === 'name') setData({ ...data, name: e.target.value });
+    else if (name === 'height')
+      setData({ ...data, height: e.target.value.replace(/\D/gi, '') });
+    else setData({ ...data, weight: e.target.value.replace(/\D/gi, '') });
+  };
+
   return (
     <div className={classes.container} elevation={0}>
       <Box component={'div'}>
@@ -13,12 +20,15 @@ function InputName({ label, name, classes }) {
         <input
           id={name}
           name={name}
+          type={type}
           size="small"
           className="customInputStyle"
+          required
+          onChange={(e) => handleChange(e)}
         />
       </Box>
     </div>
   );
 }
 
-export default InputName;
+export default InputText;
