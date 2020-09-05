@@ -27,9 +27,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ComplexGrid() {
+export default function ComplexGrid(props) {
     const classes = useStyles();
-
+    const {item} = props;
+    console.log(item)
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
@@ -43,15 +44,18 @@ export default function ComplexGrid() {
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="subtitle1">
-                                    Standard license
+                                    {item.name}
                                 </Typography>
                                 <Typography variant="body2" gutterBottom>
-                                    $19 x 1
+                                   {item.price}
+                                </Typography>
+                                <Typography variant="body2" gutterBottom>
+                                    {item.quantity}
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <Typography variant="subtitle1">$19.00</Typography>
+                            <Typography variant="subtitle1">{item.quantity*item.price}</Typography>
                         </Grid>
                     </Grid>
                 </Grid>
