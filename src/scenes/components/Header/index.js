@@ -2,8 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
+import {useRecoilState,useRecoilValue} from "recoil";
+import {itemInCart} from "../../../states/Cart";
 function Header() {
   const classes = useStyles();
+  const count = useRecoilValue(itemInCart);
 
   return (
     <div className={classes.root}>
@@ -35,6 +38,9 @@ function Header() {
               </NavLink>
               <NavLink className={classes.link} to="/checkout">
                 Checkout
+              </NavLink>
+              <NavLink className={classes.link} to="/checkout">
+                {count} item in cart
               </NavLink>
             </Box>
           </Grid>

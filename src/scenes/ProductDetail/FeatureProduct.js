@@ -6,8 +6,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     paper: {
-        height: 140,
-        width: 100,
+        height: 200,
+        width: 180,
     },
     control: {
         padding: theme.spacing(2),
@@ -26,7 +26,11 @@ export function FeatureProduct() {
 
                     {[0, 1, 2,3,4,5,6].map((value) => (
                         <Grid key={value} item>
-                            <Paper className={classes.paper} />
+                            <Paper className={classes.paper}>
+                                <img height={180} src={'#'}/>
+                                <div>title</div>
+                                <div>price</div>
+                            </Paper>
                         </Grid>
                     ))}
 

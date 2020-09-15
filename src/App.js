@@ -29,7 +29,6 @@ function App() {
         <Route path="/profile">
           <ProfileView />
         </Route>
-        <Route path="/"></Route>
         <Route path="/productdetail">
           <ProductDetail />
         </Route>
