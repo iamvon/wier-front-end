@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^7.1.2",
     "babel-loader": "^8.1.0",
     "date-fns": "^2.15.0",
+    "ky": "^0.23.0",
     "material-ui-search-bar": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -29,19 +30,19 @@
   },
   "eslintConfig": {
     "extends": "react-app",
-
-  "plugins": [
-    "react-hooks"
-  ],
-  "rules": {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": [
-      "warn", {
-        "additionalHooks": "useRecoilCallback"
-      }
-    ]
-  }
-},
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": [
+        "warn",
+        {
+          "additionalHooks": "useRecoilCallback"
+        }
+      ]
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",

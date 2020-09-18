@@ -1,12 +1,15 @@
 import React from 'react';
-import { Item, Banner, Filter, ListItem } from "../components";
-import { Box, Grid, Paper, Typography } from "@material-ui/core";
+import {Item, Banner, Filter, ListItem} from "../components";
+import {Box, Grid, Paper, Typography} from "@material-ui/core";
 import SearchBox from "../../components/Search/SearchBox"
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import {atom, useRecoilState} from 'recoil';
+import {Search} from "../../../states/Search";
 
 export default function HomePage() {
     const classes = useStyles();
+    const [searchResult, setSeach] = useRecoilState(Search);
 
     return (
         <div className={classes.root}>
@@ -14,7 +17,7 @@ export default function HomePage() {
                 <Grid item xs>
                 </Grid>
                 <Grid className={classes.cell} item xs={4}>
-                    <SearchBox />
+                    <SearchBox/>
                 </Grid>
                 <Grid item xs>
                 </Grid>
@@ -26,10 +29,10 @@ export default function HomePage() {
                 direction="column"
                 alignItems="center"
                 justify="center"
-                style={{ minHeight: '1000' }}
+                style={{minHeight: '1000'}}
             >
                 <Grid className={classes.cell} item xs={8}>
-                    <Banner />
+                    <Banner/>
                 </Grid>
             </Grid>
 
@@ -38,13 +41,15 @@ export default function HomePage() {
                 </Grid>
                 <Grid className={classes.cell} item xs={2}>
                     <div className={classes.filterText}>
-                        <FilterListIcon />
+                        <FilterListIcon/>
                         <Box p={1}>Bộ lọc tìm kiếm</Box>
                     </div>
-                    <Filter />
+                    <Filter/>
                 </Grid>
                 <Grid className={classes.cell} item xs={6}>
-                    <ListItem />
+                    {searchResult.length ? <ListItem list={searchResult}/> :
+                        <ListItem list={searchResult}/>
+                    }
                 </Grid>
                 <Grid item xs={2}>
                 </Grid>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {makeStyles, withStyles, MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -12,6 +12,11 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import {useRecoilState} from "recoil";
+import {CartState} from "../../../../states/Cart";
+import {
+    Link
+} from "react-router-dom";
 
 const theme = createMuiTheme({
     palette: {
@@ -56,13 +61,13 @@ const useStyles = makeStyles({
 });
 
 const DialogTitle = withStyles(styles)((props) => {
-    const { children, classes, onClose, ...other } = props;
+    const {children, classes, onClose, ...other} = props;
     return (
         <MuiDialogTitle disableTypography className={classes.root} {...other}>
             <Typography variant="h6">{children}</Typography>
             {onClose ? (
                 <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
-                    <CloseIcon />
+                    <CloseIcon/>
                 </IconButton>
             ) : null}
         </MuiDialogTitle>
@@ -90,52 +95,73 @@ export default function Item(props) {
     let imageUrl = props.item.image
     const styles = {
         dialog: {
-            backgroundImage: "url("+ imageUrl + ")"
+            backgroundImage: "url(" + imageUrl + ")"
         }
     };
+    const [cart, setCart] = useRecoilState(CartState);
+    const handleAddToCart = (item) => {
+        let newCart
+        if (cart.length) {
+            newCart = cart.map(el => {
+                if (el.id === item.id) {
+                    return Object.assign({}, {...el}, {quantity: el.quantity + 1})
+                }
+            })
+        } else {
+            let cartItem = Object.assign({}, {...item}, {quantity: 1})
+            newCart = [...cart, cartItem]
 
-    const DialogWithBackgroundImage = withStyles(styles)(({ classes }) => (
+        }
+        setCart(newCart);
+    }
+    const DialogWithBackgroundImage = withStyles(styles)(({classes}) => (
         <Dialog
             onClose={handleClose}
             aria-labelledby="customized-dialog-title"
             open={openDialog}
-            classes={{ paper: classes.dialog }}
+            classes={{paper: classes.dialog}}
 
         >
             {/* <DialogTitle id="customized-dialog-title" onClose={handleClose}>
                 Chi tiết sản phẩm
             </DialogTitle> */}
-            <DialogContent style={{ height: 650, width: 650 }}>
+            <DialogContent style={{height: 650, width: 650}}>
             </DialogContent>
         </Dialog>
     ));
 
     return (
+
         <Card className={classes.root}>
-            <CardActionArea
-                onClick={handleClickOpen}
+
+            <Link
+                to={{
+                    pathname: "/productdetail",
+                    state: {product: props.item}
+                }}
             >
-                <CardMedia
-                    className={classes.media}
-                    image={props.item.image}
-                    title={props.item.name}
-                />
-                <CardContent>
-                    <Typography gutterBottom component="h2">
-                        {props.item.name}
-                    </Typography>
+                <CardActionArea>
+                    <CardMedia
+                        className={classes.media}
+                        image={props.item.image}
+                        title={props.item.name}
+                    />
+
                     <MuiThemeProvider theme={theme}>
+                        <Typography style={{color:'black'}} component="h2">
+                            {props.item.name}
+                        </Typography>
                         <Typography variant="body2" color="secondary" component="p">
                             {props.item.price + "₫"}
                         </Typography>
                     </MuiThemeProvider>
-                </CardContent>
-            </CardActionArea>
+                </CardActionArea>
 
-            <DialogWithBackgroundImage />
+                <DialogWithBackgroundImage/>
 
-            <CardActions style={{ justifyContent: 'flex-end' }}>
-                <Button size="small" color="primary">
+            </Link>
+            <CardActions style={{justifyContent: 'flex-end'}}>
+                <Button size="small" color="primary" onClick={() => handleAddToCart(props.item)}>
                     Thêm vào giỏ hàng
                 </Button>
                 {/* <Button size="small" color="primary">
