@@ -17,15 +17,15 @@ function App() {
       <Header />
       {/* BODY */}
       <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
+        {/*<Route path="/login">*/}
+        {/*  <Login />*/}
+        {/*</Route>*/}
         <Route path="/checkout">
           <Checkout />
         </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
+        {/*<Route path="/register">*/}
+        {/*  <Register />*/}
+        {/*</Route>*/}
         <Route path="/profile">
           <ProfileView />
         </Route>

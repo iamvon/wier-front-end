@@ -56,19 +56,19 @@ function Persona() {
     /* For testing */
     console.log('%cHello', 'color: aquamarine; font-size: 30px;');
     console.log(data);
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
   };
 
   return (
     <form className={classes.root}>
-      <InputText
-        label="Tên"
-        name="name"
-        classes={classes}
-        setData={setData}
-        data={data}
-        type="text"
-      />
+      {/*<InputText*/}
+      {/*  label="Tên"*/}
+      {/*  name="name"*/}
+      {/*  classes={classes}*/}
+      {/*  setData={setData}*/}
+      {/*  data={data}*/}
+      {/*  type="text"*/}
+      {/*/>*/}
       <InputText
         label="Chiều cao"
         name="height"
