@@ -11,11 +11,11 @@ const itemInCart = selector({
     get: ({get}) => {
         // eslint-disable-next-line no-undef
         const item = get(CartState);
-        let totalQuantity=0;
+        let totalQuantity = 0;
         item.forEach(el => {
-            totalQuantity += el.quantity
+            totalQuantity += el.quantity || 1
         })
         return totalQuantity;
     },
 });
-export {CartState,itemInCart}
+export {CartState, itemInCart}
