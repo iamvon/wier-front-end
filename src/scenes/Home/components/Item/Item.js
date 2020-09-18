@@ -51,9 +51,10 @@ const styles = (theme) => ({
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        height: '100%'
     },
     media: {
-        height: 140,
+        height: 300,
     },
     price: {
         color: theme.palette.secondary,
@@ -84,7 +85,6 @@ const DialogContent = withStyles((theme) => ({
 export default function Item(props) {
     const classes = useStyles();
     const [openDialog, setOpenDialog] = React.useState(false);
-
     const handleClickOpen = () => {
         setOpenDialog(true);
     };
@@ -99,20 +99,30 @@ export default function Item(props) {
         }
     };
     const [cart, setCart] = useRecoilState(CartState);
+    let a = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')): []
+
     const handleAddToCart = (item) => {
         let newCart
-        if (cart.length) {
-            newCart = cart.map(el => {
-                if (el.id === item.id) {
+        if (a.length) {
+            newCart = a.map(el => {
+                if (el.itemid === item.itemid) {
                     return Object.assign({}, {...el}, {quantity: el.quantity + 1})
                 }
             })
         } else {
             let cartItem = Object.assign({}, {...item}, {quantity: 1})
-            newCart = [...cart, cartItem]
+
+            a.length ?            newCart = [...a, cartItem]
+                :             newCart = [ cartItem]
+
 
         }
         setCart(newCart);
+        console.log(cart)
+        // localStorage.setItem('cart', newCart)
+        localStorage.setItem('cart', JSON.stringify(newCart))
+
+
     }
     const DialogWithBackgroundImage = withStyles(styles)(({classes}) => (
         <Dialog
@@ -129,9 +139,10 @@ export default function Item(props) {
             </DialogContent>
         </Dialog>
     ));
-
+    let itemPrice = (props.item.price/100000).toLocaleString( {
+        style: 'currency',
+    })
     return (
-
         <Card className={classes.root}>
 
             <Link
@@ -140,34 +151,30 @@ export default function Item(props) {
                     state: {product: props.item}
                 }}
             >
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={props.item.image}
-                        title={props.item.name}
-                    />
-
-                    <MuiThemeProvider theme={theme}>
-                        <Typography style={{color:'black'}} component="h2">
-                            {props.item.name}
+                <div>
+                        <CardMedia
+                            className={classes.media}
+                            image={"https://cf.shopee.vn/file/"+props.item.image}
+                            title={props.item.name}
+                        />
+                        <Typography style={{color:'black',textOverflow: 'ellipsis'}} component="h2">
+                            {props.item.name.length > 50 ?props.item.name.slice(0,50) + '...' : props.item.name}
                         </Typography>
                         <Typography variant="body2" color="secondary" component="p">
-                            {props.item.price + "₫"}
+                            {itemPrice+'đ'}
                         </Typography>
-                    </MuiThemeProvider>
-                </CardActionArea>
 
-                <DialogWithBackgroundImage/>
+                </div>
 
             </Link>
-            <CardActions style={{justifyContent: 'flex-end'}}>
+            <div style={{justifyContent: 'flex-end'}}>
                 <Button size="small" color="primary" onClick={() => handleAddToCart(props.item)}>
                     Thêm vào giỏ hàng
                 </Button>
                 {/* <Button size="small" color="primary">
                     Yêu thích
                 </Button> */}
-            </CardActions>
+            </div>
         </Card>
     );
 }

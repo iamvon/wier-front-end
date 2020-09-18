@@ -10,12 +10,17 @@ const itemInCart = selector({
     key: 'itemInCart', // unique ID (with respect to other atoms/selectors)
     get: ({get}) => {
         // eslint-disable-next-line no-undef
-        const item = get(CartState);
+        let a = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')): []
+        console.log(a)
+        const item = get(CartState) ;
+        console.log(item)
         let totalQuantity = 0;
-        item.forEach(el => {
-            totalQuantity += el.quantity || 1
+        // eslint-disable-next-line no-unused-expressions
+        a?.forEach(el => {
+            totalQuantity += el?.quantity ? el.quantity : 1
         })
         return totalQuantity;
+
     },
 });
 export {CartState, itemInCart}

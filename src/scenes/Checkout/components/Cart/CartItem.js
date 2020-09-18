@@ -31,6 +31,9 @@ export default function ComplexGrid(props) {
     const classes = useStyles();
     const {item} = props;
     console.log(item)
+    let itemPrice = (props.item.price/100000).toLocaleString( {
+        style: 'currency',
+    })
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
@@ -47,7 +50,7 @@ export default function ComplexGrid(props) {
                                     {item.name}
                                 </Typography>
                                 <Typography variant="body2" gutterBottom>
-                                   {item.price}
+                                   {itemPrice}
                                 </Typography>
                                 <Typography variant="body2" gutterBottom>
                                     {item.quantity}
@@ -55,7 +58,9 @@ export default function ComplexGrid(props) {
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <Typography variant="subtitle1">{item.quantity*item.price}</Typography>
+                            <Typography variant="subtitle1">{(item.quantity*item.price/100000).toLocaleString( {
+                                style: 'currency',
+                            })}</Typography>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -24,21 +24,21 @@ function Header() {
               <NavLink className={classes.link} to="/">
                 Home
               </NavLink>
-              <NavLink className={classes.link} to="/login">
-                Login
-              </NavLink>
-              <NavLink className={classes.link} to="/register">
-                Register
-              </NavLink>
+              {/*<NavLink className={classes.link} to="/login">*/}
+              {/*  Login*/}
+              {/*</NavLink>*/}
+              {/*<NavLink className={classes.link} to="/register">*/}
+              {/*  Register*/}
+              {/*</NavLink>*/}
               <NavLink className={classes.link} to="/profile">
                 Profile
               </NavLink>
-              <NavLink className={classes.link} to="/productdetail">
-                Product detail
-              </NavLink>
-              <NavLink className={classes.link} to="/checkout">
-                Checkout
-              </NavLink>
+              {/*<NavLink className={classes.link} to="/productdetail">*/}
+              {/*  Product detail*/}
+              {/*</NavLink>*/}
+              {/*<NavLink className={classes.link} to="/checkout">*/}
+              {/*  Checkout*/}
+              {/*</NavLink>*/}
               <NavLink className={classes.link} to="/checkout">
                 {count} item in cart
               </NavLink>
