@@ -59,11 +59,11 @@ export default function HomePage() {
                 <Grid item xs={2}>
                 </Grid>
                 <Grid className={classes.cell} item xs={2}>
-                    <div className={classes.filterText}>
-                        <FilterListIcon/>
-                        <Box p={1}>Bộ lọc tìm kiếm</Box>
-                    </div>
-                    <Filter/>
+                    {/*<div className={classes.filterText}>*/}
+                    {/*    <FilterListIcon/>*/}
+                    {/*    <Box p={1}>Bộ lọc tìm kiếm</Box>*/}
+                    {/*</div>*/}
+                    {/*<Filter/>*/}
                 </Grid>
                 <Grid className={classes.cell} item xs={6}>
                     {!loading ? <ListItem list={searchResult}/> :
